@@ -10,6 +10,7 @@ from PyQt4.QtCore import QDir
 from PyQt4.QtCore import QTextStream
 from PyQt4.QtCore import QIODevice
 from PyQt4.QtCore import QTime
+import base64
 
 
 
@@ -38,15 +39,13 @@ class Guardar(object):
         nombre = dialog.getSaveFileName(None, "Save As", pathInicial, "Sudoku (*.su)")
         if nombre == None:
             return False
-        archivo = QFile(nombre)
-        if archivo.open(QIODevice.WriteOnly):
-            out = QTextStream(archivo)
-            out << self.cadenaAguardar
-            archivo.close()
-            return True
         else:
-            print "no se pudo abrir el archivo"
-            return False
+            file = open("out.txt", "w")
+            file.write(self.cadenaAguardar)
+            file.close()
+            base64.encode(open("out.txt"), open(nombre, "w"))
+            print "se creo archivo"
+            return True
             
     def guardarValores(self, matriz, solucion, nombre, nivel, tiempo):
         #concateno string de la solucion
@@ -74,16 +73,19 @@ class Guardar(object):
         print nombre
         if nombre == None:
             return False
-        archivo = QFile(nombre)
-        k = 0
-        if archivo.open(QIODevice.ReadOnly):
-            recibido = QTextStream(archivo)
-            cadena = recibido.readAll()
+        else:
+            k = 0
+            print "entro al if archivo.open"
+            base64.decode(open(nombre), open("out.txt", "w"))
             print "imprimiendo cadena leida"
-            print cadena
+      
+            print "imprimiendo cadena decodificada"
+            data = open("out.txt").read()
+            print "decoded message:", data
             #Aqui debe ir la parte de descriptacion
             
-            lista = cadena.split("^")
+            lista = data.split("^")
+            print lista
             #setenado matriz de juego actual y solucion
             actual = lista[0] #cadena con matriz de juego actual
             actual2 = lista[1] #cadena con solucion
@@ -111,7 +113,5 @@ class Guardar(object):
             print self.nivel
             print self.tiempo
             return True
-        else:
-            "no se ha podido abrir el archivo"
-            return False
-    
+        
+        
