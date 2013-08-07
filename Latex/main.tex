@@ -1,0 +1,369 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 1.2 (19/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% This means that to update the bibliography and index in this template you
+% will need to run the following sequence of commands in the template
+% directory:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+\usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,a4paper]{geometry} % Page margins
+\usepackage{float}
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+
+% Font Settings
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+% Bibliography
+\usepackage[style=alphabetic,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{}
+
+% Index
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	Titulo
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\AddToShipoutPicture*{\put(6,5){\includegraphics[scale=1]{background}}} % Image background
+\centering
+\vspace*{9cm}
+\par\normalfont\fontsize{35}{35}\sffamily\selectfont
+\centering\includegraphics[scale=0.5]{icon640.png}
+
+\centering\includegraphics{i160x130.png}
+
+Sudoku\par % Book title
+\vspace*{1cm}
+{\Huge Jefferson Rivera}\par % Author name
+{\Huge Rubén Carvanal}\par % Author name
+{\Huge César Madrid}\par % Author name
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\newpage
+~\vfill
+\thispagestyle{empty}
+
+\noindent Copyright \copyright\ 2013 César Madrid\\ % Copyright notice
+
+\noindent \textsc{Published by Publisher}\\ % Publisher
+
+\noindent \textsc{book-website.com}\\ % URL
+
+\noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``AS IS'' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
+
+\noindent \textit{Primera edicion, Julio 2013} % Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_1.pdf} % Table of contents heading image
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+
+%----------------------------------------------------------------------------------------
+%	Capitulo 1
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
+\chapter{Introduccion}
+
+\section{Quienes somos?}\index{Paragraphs of Text}
+
+Somos un grupo de tres estudiantes de Ingenieria en Ciencias Computacionales en la Escuela Superior Politecnica del Litoral, trabajamos en en proyecto para la materia Lenguajes de Programacion a cargo del profesor Javier Alejandro Tibau Benitez.
+
+
+%------------------------------------------------
+
+\section{Que es Sudoku?}\index{Paragraphs of Text}
+
+"Sudoku es un pasatiempo que se publicó por primera vez a finales de la década de 1970 y se popularizó en Japón en 1986, dándose a conocer en el ámbito internacional en 2005 cuando numerosos periódicos empezaron a publicarlo en su sección de pasatiempos.El objetivo del sudoku es rellenar una cuadrícula de 9 x 9 celdas dividida en subcuadriculas de 3 x 3 (también llamadas "cajas" o "regiones") con las cifras del 1 al 9 partiendo de algunos números ya dispuestos en algunas de las celdas.  Aunque se podrían usar colores, letras, figuras, se conviene en usar números para mayor claridad, lo que importa, es que sean nueve elementos diferenciados, que no se deben repetir en una misma fila, columna o subcuadrícula. Un sudoku está bien planteado si la solución es única. La solución de un sudoku siempre es un cuadrado latino, aunque el recíproco en general no es cierto ya que el sudoku establece la restricción añadida de que no se puede repetir un mismo número en una región." \cite{http://es.wikipedia.org/wiki/Sudoku}
+
+
+%------------------------------------------------
+
+\section{Reglas de Juego}\index{Lists}
+
+El sudoku se compone de 3 reglas basadas en el mismo punto, colocar numeros del 1 al 9 sin que se repitan en filas columnas y subcuadriculas.
+
+Lists are useful to present information in a concise and/or ordered way\footnote{Footnote example...}.
+
+\subsection{Filas}\index{Lists!Numbered List}
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.5]{ejfila1.png}
+\caption{ejmeplo de sudoku}
+\end{figure}
+
+En la imagen se puede observar que en la primera fila pueden ir los numeros 9 y 3, mientras que en la segunda casilla solo encaja el 7 asi que es un número seguro a llenar
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.5]{ejfila.png}
+\caption{ejmeplo de sudoku}
+\end{figure}
+
+\subsection{Columnas}\index{Lists!Numbered List}
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.5]{ejcol.png}
+\caption{ejmeplo de sudoku}
+\end{figure}
+
+En esta imagen se puede observar que en la columna indicada solo puede ir el número 9 asi que es un numero seguro a llenar.
+
+\subsection{Subcuadriculas}\index{Lists!Numbered List}
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.5]{ejsub.png}
+\caption{ejmeplo de sudoku}
+\end{figure}
+
+En esta imagen observando la subcuadricula se nota que aun faltan 2 numeros por llenar, pero podemos observar que en la primera fila solo quedaun cuadro vacio con lo que aseguramos que ahi va un número 3, lo que nos deja la cuadricula con un espacio, donde cuadra el numero 8.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{ejsub1.png}
+\caption{ejmeplo de sudoku}
+\end{figure}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Capitulo 2
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
+\chapter{Uso de la aplicacion}
+
+\section{Iniciar nueva partida}\index{Paragraphs of Text}
+
+Una vez iniciada la aplicacion se va a mostrar la interface principal del juego, pero esta no estara disposible para uso hasta que inicie una nueva partida.
+Para esto ud debe colocarse en el menu superior de la aplicacion -> Partida ->Nueva.
+
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{inicio.png}
+\caption{Nueva partida}
+\end{figure}
+
+%------------------------------------------------
+
+\section{Seleccion de niveles}\index{Paragraphs of Text}
+
+Una vez que ponen nueva partida les va a mostrar las dificultades de juego, desde novato hasta modo leyenda, con las que podras ir demostrando tus habilidades de juego.
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.8]{niveles.png}
+\caption{Seleccion de niveles}
+\end{figure}
+
+
+Selecciona una difiltudad segun su nivel de confianza en este juego .
+\begin{enumerate}
+\item Novato para principiantes y gente que nunca ha jugado antes.
+\item Intermedio para gente que ya ha mejorado sus tecnicas y puede resolver los faciles mas rapido.
+\item Profesional para gente ya con experiencia y ya tiene una habilidad para avanzar a este nivel.
+\item Leyenda.- Se dice que hace mucho tiempo alguien logro terminar este sudoku (Juegalo bajo tu propio riesgo).
+\end{enumerate}
+
+
+%------------------------------------------------
+
+\section{Inicio del juego y Nombre del Jugador}\index{Paragraphs of Text}
+
+Una vez seleccionado el nivel de juego cargara una tabla de su sudoku y le pedira que ingrese su nombre. Una vez que lo ingrese arrancara el tiempo.
+Para asignar valores a las casillas en blanco basta con dar click sobre la que desee editar y luego al lado izquiero cuenta con una botonera con los números del 1 al 9, el que seleccione se aplicara a su casilla.
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{nombre.png}
+\caption{Seleccion de niveles}
+\end{figure}
+
+\section{Jugando}\index{Lists!Numbered List}
+
+Para asignar valores a las casillas en blanco basta con dar click sobre la que desee editar, esta casilla se pondra azul, y luego al lado derecho de la pantalla cuenta con una botonera con los números del 1 al 9, el que seleccione se aplicara a su casilla.
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{ingresarCasilla.png}
+\caption{Ingresar un valor}
+\end{figure}
+
+\section{Verificar Tablero}\index{Lists!Numbered List}
+
+Cuando ud crea que ha armado un tablero correcto ud podra proceder a verificar que no tenga errores utilizando el boton "verificar" ubicado en el lado derecho sobre el cronometro.
+En caso de que su sudoku tenga errores le saldra una advertencia y le marcara de rojo las casillas que no cumplan con las reglas, caso contrario le indicara que su sudoku esta correcto y terminara el juego.
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{Verificar.png}
+\caption{Ingresar un valor}
+\end{figure}
+
+\section{Hints}\index{Lists!Numbered List}
+
+Si ud se encuentra trabado en el tablero o no sabe como comenzar ud dispone de un boton para que le complete automaticamente una casilla, el boton se puede usar limitadas veces dependiendo de la dificultad de su tablero.
+
+\begin{enumerate}
+\item Novato dispone de 12 Hints.
+\item Intermedio dispone de 8 Hints.
+\item Profesional dispone de 4 Hints.
+\item Leyenda dispone de 2 Hints.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{Hints.png}
+\caption{Hints}
+\end{figure}
+
+\section{Puntuacion y Sistema de ranking}\index{Lists!Numbered List}
+
+Cuando ud termina una partida ud podra observar el puntaje generado en ella, dependiendo de el buen puntaje que tenga ud podra pasar a una lista del ranking donde observara en que lugar se encuentra.
+
+Para poder ver la lista de ranking ud debe seleccionar en la barra de menu la opcion Ajustes y luego selecciona ranking.
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{ranking.png}
+\caption{Sistema de ranking}
+\end{figure}
+
+\section{Guardar y Cargar partidas}\index{Lists!Numbered List}
+
+\subsection{Guardar partidas}\index{Lists!Numbered List}
+
+Si ud esta en media partida pero por alguna razon tiene que dejarla abandonada, ud puede utilizar la opcion de guardar partida, esta opcion se encuentra ubicada en el menu superior del juego -> Partida -> Guardar (o puede hacer uso del atajo rapido ctrl+g).
+
+
+
+Estando ya en esa opcion le pedira que indique una ubicacion para guardar su partida, la selecciona y procede a guardar.
+
+\subsection{Cargar partidas}\index{Lists!Numbered List}
+
+Si ud desea continuar alguna partida que por alguna razon dejo abandonada pero la guardo, ud puede utilizar la opcion de cargar partida, esta opcion se encuentra ubicada en el menu superior del juego -> Partida -> Guardar (o puede hacer uso del atajo rapido ctrl+c).
+
+
+
+Estando ya en esa opcion le pedira que indique la ubicacion donde guaro su partida, la selecciona y procede a abrirla.
+
+\section{Salir del juego}\index{Lists!Numbered List}
+
+En cualquier momento uds puede salir del juego ya sea usando la la X por defecto para cerrar programas en windows y linux o en el menu superior del juego -> Partida -> Salir.
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.6]{guardar.png}
+\caption{Guardar, Cargar Y Salir}
+\end{figure}
+
+Ud puede guardar su partida antes de cerrar el juego, si no lo hace esa partida quedara irrecuperable.
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Capitulo 3
+%----------------------------------------------------------------------------------------
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+
+\chapter{Estructura de la pantalla de un juego}
+
+\section{Partes de la pantallade juego}\index{Paragraphs of Text}
+
+\begin{figure}[H]
+\centering\includegraphics[scale=0.57]{pantallaDeJuego.png}
+\caption{Pantalla de juego}
+\end{figure}
+
+\begin{enumerate}
+\item Tablero del sudoku(Filas, Columnas y subcuadriculas), donde se centra todo el juego.
+\item Logo del de esta implementacion del juego.
+\item Nombre del jugador.
+\item Nivel del tablero.
+\item Botoneras del 1 al 9 con las que se asigna el valor a las casillas.
+\item Boton "verificar", para comprobar si tu sudoku esta correcto.
+\item Boton "Hints", para obtener pistas durante el juego(Limitadas).
+\item Cronometro(Tiempo que demora en resolver el sudoku).
+\item Menu superior, donde puede Guardar/Cargar y encontrar informacion sobre el juego.
+
+\end{enumerate}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+\section*{Web}
+http://es.wikipedia.org/wiki/Sudoku
+
+
+
+\end{document}
