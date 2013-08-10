@@ -31,6 +31,7 @@ class Main(QtGui.QMainWindow):
         self.level = Nivel()
         QObject.connect(self.level, SIGNAL("nivel"), self.iniciarJuego)
         self.ui.crono.display("00:00")
+        self.bandera = True
         
         
     def initGuiCelda(self):
@@ -250,6 +251,9 @@ class Main(QtGui.QMainWindow):
             print "entra a resetear y colocar borde"
             self.celdaRuntime.reset()
             self.celdaRuntime.setBlackBorder()
+        if self.bandera == False:
+            self.volverTableroNormal()
+            self.bandera = True
         self.celdaRuntime = self.sender()
         self.setTableroActual()
         self.setPistas()
@@ -284,6 +288,13 @@ class Main(QtGui.QMainWindow):
                 print tmp
                 if tmp!= 0:
                     pistas[tmp-1]=0
+            l = (((columna/3)+1)+(fila/3)*3)
+            for i in range((((l-1)/3)*3),((((l-1)/3)*3)+3)):
+                for j in range((((l-1)%3)*3),((((l-1)%3)*3)+3)):
+                    tmp = self.tableroActual[i][j]
+                    if tmp != 0:
+                        pistas[tmp-1]=0
+                    
         except AttributeError:
             print "Aun no se inicializado tableroActual... :("
         k = 0
@@ -377,8 +388,14 @@ class Main(QtGui.QMainWindow):
             QtGui.QMessageBox.about(self, "Felicitaciones", "Sudoku Resuleto Correctamente")
         else:
             QtGui.QMessageBox.about(self, "Mensaje", "Sudoku resuleto incorrectamente")
+        self.bandera = False
 
 
+    def volverTableroNormal(self):
+        for i in range(0,9):
+            for j in range(0,9):
+                self.ui.tablero.itemAtPosition(i/3, j/3).itemAtPosition(i%3, j%3).widget().setBackColor("white")
+        
     def cmdHint_clicked(self):
         print "proximamente lo implementaremos"
         if self.hints > 0:
